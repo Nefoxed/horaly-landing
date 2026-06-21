@@ -240,6 +240,9 @@ footer{background:var(--ink);padding:3rem 2rem}
   nav .nav-links{display:none}
   .footer-inner{flex-direction:column;text-align:center}
   .form-row{grid-template-columns:1fr}
+  .grid-2col{grid-template-columns:1fr !important}
+  .grid-2col-pro{grid-template-columns:1fr !important}
+  .section-inner{padding:0 1rem}
 }
 </style>
 </head>
@@ -474,7 +477,7 @@ footer{background:var(--ink);padding:3rem 2rem}
   <div class="section-inner">
     <div class="section-eyebrow" data-fr="Dès le 1er janvier 2027" data-nl="Vanaf 1 januari 2027">Dès le 1er janvier 2027</div>
     <div class="section-title" data-fr="Pourquoi agir maintenant ?" data-nl="Waarom nu handelen?">Pourquoi agir maintenant ?</div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:2rem">
+    <div class="grid-2col" style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:2rem">
       <div style="background:#fff5f5;border:1px solid #fecaca;border-radius:var(--radius);padding:1.5rem">
         <div style="font-size:.75rem;font-weight:700;color:var(--red);letter-spacing:.08em;margin-bottom:1rem;font-family:var(--mono)" data-fr="SANS HORALY" data-nl="ZONDER HORALY">SANS HORALY</div>
         <div style="display:flex;flex-direction:column;gap:.7rem">
@@ -524,7 +527,7 @@ footer{background:var(--ink);padding:3rem 2rem}
     <!-- Fonctionnalités Pro en vedette -->
     <div style="margin-top:1rem;background:linear-gradient(135deg,#f3f0ff,#fafaff);border:1px solid rgba(79,70,229,.2);border-radius:var(--radius);padding:1.25rem 1.5rem">
       <div style="font-size:.65rem;font-weight:700;letter-spacing:.1em;color:var(--accent);font-family:var(--mono);margin-bottom:1rem;text-transform:uppercase" data-fr="✦ Exclusif plan Pro" data-nl="✦ Exclusief Pro plan">✦ Exclusif plan Pro</div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.25rem">
+      <div class="grid-2col-pro" style="display:grid;grid-template-columns:1fr 1fr;gap:1.25rem">
         <div style="display:flex;gap:1rem;align-items:flex-start">
           <div style="font-size:1.4rem;flex-shrink:0">🔔</div>
           <div>
