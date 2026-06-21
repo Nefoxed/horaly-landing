@@ -1,0 +1,1081 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Horaly — La pointeuse digitale pour PME belges. Conforme loi 2027. Installation en 10 minutes.">
+<title>Horaly — Pointeuse digitale pour PME belges</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Bricolage+Grotesque:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --ink:#0e0e14;
+  --ink2:#3a3a4a;
+  --ink3:#7a7a9a;
+  --bg:#f7f7fb;
+  --bg2:#ffffff;
+  --accent:#4f46e5;
+  --accent2:#7c6af7;
+  --accent-light:#ede9ff;
+  --green:#059669;
+  --green-light:#d1fae5;
+  --amber:#d97706;
+  --red:#dc2626;
+  --border:#e4e4f0;
+  --radius:12px;
+  --mono:'DM Mono',monospace;
+  --sans:'Bricolage Grotesque',sans-serif;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--bg);color:var(--ink);line-height:1.6;overflow-x:hidden}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(247,247,251,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 2rem}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px}
+.nav-logo{font-size:1.3rem;font-weight:800;color:var(--ink);letter-spacing:-.02em;text-decoration:none}
+.nav-logo span{color:var(--accent)}
+.nav-links{display:flex;align-items:center;gap:2rem}
+.nav-links a{font-size:.875rem;font-weight:500;color:var(--ink2);text-decoration:none;transition:color .2s}
+.nav-links a:hover{color:var(--accent)}
+.nav-cta{background:var(--accent);color:#ffffff !important;border:2px solid var(--accent);border-radius:8px;padding:.55rem 1.25rem;font-size:.875rem;font-weight:700;font-family:var(--sans);cursor:pointer;transition:all .2s;text-decoration:none !important;letter-spacing:.01em;box-shadow:0 2px 8px rgba(79,70,229,.35)}
+.nav-cta:hover{background:var(--accent2);border-color:var(--accent2);color:#ffffff !important}
+.lang-toggle{display:flex;gap:.25rem}
+.lang-btn{background:none;border:1px solid var(--border);border-radius:6px;padding:.25rem .6rem;font-size:.75rem;font-family:var(--mono);color:var(--ink3);cursor:pointer;transition:all .2s}
+.lang-btn.active{background:var(--accent);border-color:var(--accent);color:#fff}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;padding:8rem 2rem 5rem;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-200px;right:-200px;width:700px;height:700px;background:radial-gradient(circle,rgba(79,70,229,.08) 0%,transparent 70%);pointer-events:none}
+.hero::after{content:'';position:absolute;bottom:-100px;left:-100px;width:400px;height:400px;background:radial-gradient(circle,rgba(124,106,247,.06) 0%,transparent 70%);pointer-events:none}
+.hero-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+.hero-badge{display:inline-flex;align-items:center;gap:.5rem;background:var(--accent-light);color:var(--accent);border-radius:100px;padding:.35rem .9rem;font-size:.75rem;font-weight:600;font-family:var(--mono);letter-spacing:.05em;margin-bottom:1.5rem}
+.hero-badge::before{content:'';width:6px;height:6px;background:var(--accent);border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.hero h1{font-size:clamp(2.2rem,4vw,3.5rem);font-weight:800;line-height:1.1;letter-spacing:-.03em;color:var(--ink);margin-bottom:1.25rem}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.hero p{font-size:1.1rem;color:var(--ink2);margin-bottom:2rem;line-height:1.7;font-weight:400}
+.hero-actions{display:flex;gap:1rem;flex-wrap:wrap;align-items:center}
+.btn-primary{background:var(--accent);color:#fff;border:none;border-radius:10px;padding:.85rem 2rem;font-size:1rem;font-weight:700;font-family:var(--sans);cursor:pointer;transition:all .2s;text-decoration:none;display:inline-block}
+.btn-primary:hover{background:var(--accent2);transform:translateY(-1px)}
+.btn-secondary{background:transparent;color:var(--ink);border:1.5px solid var(--border);border-radius:10px;padding:.85rem 2rem;font-size:1rem;font-weight:600;font-family:var(--sans);cursor:pointer;transition:all .2s;text-decoration:none;display:inline-block}
+.btn-secondary:hover{border-color:var(--accent);color:var(--accent)}
+.hero-sub{font-size:.8rem;font-family:var(--mono);color:var(--ink3);margin-top:1rem;display:flex;flex-wrap:wrap;gap:.35rem;align-items:center}
+
+/* MOCKUP */
+.hero-mockup{position:relative}
+.mockup-card{background:var(--ink);border-radius:20px;padding:1.5rem;box-shadow:0 40px 80px rgba(14,14,20,.25),0 0 0 1px rgba(255,255,255,.05);position:relative;overflow:hidden}
+.mockup-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent2))}
+.mockup-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.25rem}
+.mockup-logo{font-size:.9rem;font-weight:700;color:#fff;letter-spacing:.1em}
+.mockup-logo span{color:var(--accent2)}
+.mockup-time{font-family:var(--mono);font-size:1.4rem;font-weight:500;color:var(--accent2)}
+.mockup-workers{display:flex;flex-direction:column;gap:.6rem;margin-bottom:1.25rem}
+.mockup-worker{background:rgba(255,255,255,.05);border-radius:10px;padding:.75rem 1rem;display:flex;align-items:center;justify-content:space-between}
+.mockup-worker-info{display:flex;align-items:center;gap:.75rem}
+.mockup-avatar{width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-size:.8rem;font-weight:700;color:#fff}
+.mockup-name{font-size:.85rem;font-weight:600;color:#fff}
+.mockup-since{font-size:.7rem;font-family:var(--mono);color:rgba(255,255,255,.4)}
+.mockup-status{font-size:.7rem;font-family:var(--mono);padding:.2rem .6rem;border-radius:6px}
+.s-work{background:rgba(5,150,105,.15);color:#34d399}
+.s-pause{background:rgba(217,119,6,.15);color:#fbbf24}
+.s-off{background:rgba(255,255,255,.05);color:rgba(255,255,255,.3)}
+.mockup-stats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:.5rem}
+.mockup-stat{background:rgba(255,255,255,.04);border-radius:8px;padding:.6rem;text-align:center}
+.mockup-stat-val{font-family:var(--mono);font-size:1rem;font-weight:500;color:#fff}
+.mockup-stat-lbl{font-size:.65rem;color:rgba(255,255,255,.35);margin-top:.2rem;font-family:var(--mono)}
+.floating-badge{position:absolute;bottom:-1rem;right:-1rem;background:#fff;border-radius:12px;padding:.75rem 1rem;box-shadow:0 8px 24px rgba(14,14,20,.15);display:flex;align-items:center;gap:.5rem;font-size:.8rem;font-weight:600;color:var(--green)}
+.floating-badge::before{content:'✓';background:var(--green-light);color:var(--green);width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:700}
+
+/* PIN animation */
+.pin-dot{width:12px;height:12px;border-radius:50%;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);transition:all .2s}
+.pin-dot.filled{background:var(--accent2);border-color:var(--accent2);transform:scale(1.15)}
+.mock-key{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:.5rem;text-align:center;font-size:.85rem;font-family:var(--mono);color:#fff;cursor:default;transition:all .15s;user-select:none}
+.mock-key.pressed{background:var(--accent);border-color:var(--accent);transform:scale(.92)}
+/* Carousel scenes */
+.scene-dot{width:20px;height:3px;border-radius:2px;background:rgba(255,255,255,.15);transition:all .3s}
+.scene-dot.active{background:var(--accent2);width:28px}
+.dash-row{border-radius:7px;padding:.4rem .6rem;display:flex;align-items:center;justify-content:space-between}
+@keyframes popIn{0%{transform:scale(0)}100%{transform:scale(1)}}
+
+/* STATS BAR */
+.stats-bar{background:var(--ink);padding:3rem 2rem}
+.stats-bar-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;text-align:center}
+.stat-item-val{font-size:2.2rem;font-weight:800;color:#fff;letter-spacing:-.03em}
+.stat-item-val span{color:var(--accent2)}
+.stat-item-lbl{font-size:.8rem;font-family:var(--mono);color:rgba(255,255,255,.4);margin-top:.25rem}
+
+/* SECTIONS */
+section{padding:5rem 2rem}
+.section-inner{max-width:1100px;margin:0 auto}
+.section-eyebrow{font-size:.75rem;font-family:var(--mono);color:var(--accent);letter-spacing:.12em;text-transform:uppercase;margin-bottom:.75rem}
+.section-title{font-size:clamp(1.8rem,3vw,2.5rem);font-weight:800;letter-spacing:-.03em;color:var(--ink);margin-bottom:1rem;line-height:1.15}
+.section-sub{font-size:1rem;color:var(--ink2);max-width:520px;line-height:1.7}
+
+/* FEATURES */
+.features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem}
+.feature-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:1.75rem;transition:all .2s}
+.feature-card:hover{border-color:var(--accent);box-shadow:0 4px 20px rgba(79,70,229,.08);transform:translateY(-2px)}
+.feature-icon{width:44px;height:44px;background:var(--accent-light);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;margin-bottom:1rem}
+.feature-title{font-size:1rem;font-weight:700;color:var(--ink);margin-bottom:.5rem}
+.feature-desc{font-size:.875rem;color:var(--ink2);line-height:1.6}
+
+/* HOW IT WORKS */
+.how-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:3rem;position:relative}
+.how-grid::before{content:'';position:absolute;top:28px;left:calc(16.67% + 1rem);right:calc(16.67% + 1rem);height:1px;background:linear-gradient(90deg,var(--accent),var(--accent2));z-index:0}
+.how-step{text-align:center;position:relative;z-index:1}
+.how-num{width:56px;height:56px;background:var(--accent);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.1rem;font-weight:700;color:#fff;margin:0 auto 1rem;box-shadow:0 0 0 8px var(--bg)}
+.how-title{font-size:1rem;font-weight:700;color:var(--ink);margin-bottom:.5rem}
+.how-desc{font-size:.875rem;color:var(--ink2);line-height:1.6}
+
+/* PRICING */
+#pricing{background:var(--ink)}
+#pricing .section-title{color:#fff}
+#pricing .section-eyebrow{color:var(--accent2)}
+#pricing .section-sub{color:rgba(255,255,255,.5)}
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem}
+.pricing-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:2rem;position:relative;transition:all .2s}
+.pricing-card.featured{background:var(--accent);border-color:var(--accent);transform:scale(1.03)}
+.pricing-badge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:#fff;color:var(--accent);font-size:.7rem;font-weight:700;font-family:var(--mono);padding:.25rem .8rem;border-radius:100px;white-space:nowrap}
+.pricing-plan{font-size:.8rem;font-family:var(--mono);color:rgba(255,255,255,.5);letter-spacing:.1em;margin-bottom:.5rem}
+.pricing-card.featured .pricing-plan{color:rgba(255,255,255,.7)}
+.pricing-price{font-size:2.5rem;font-weight:800;color:#fff;letter-spacing:-.03em;margin-bottom:.25rem}
+.pricing-price span{font-size:1rem;font-weight:400;color:rgba(255,255,255,.4)}
+.pricing-card.featured .pricing-price span{color:rgba(255,255,255,.6)}
+.pricing-desc{font-size:.8rem;color:rgba(255,255,255,.4);margin-bottom:1.5rem;font-family:var(--mono)}
+.pricing-card.featured .pricing-desc{color:rgba(255,255,255,.7)}
+.pricing-features{list-style:none;display:flex;flex-direction:column;gap:.6rem;margin-bottom:2rem}
+.pricing-features li{font-size:.875rem;color:rgba(255,255,255,.6);display:flex;align-items:center;gap:.5rem}
+.pricing-card.featured .pricing-features li{color:rgba(255,255,255,.9)}
+.pricing-features li::before{content:'✓';color:var(--accent2);font-weight:700;flex-shrink:0}
+.pricing-card.featured .pricing-features li::before{color:#fff}
+.pricing-features li.no::before{content:'—';color:rgba(255,255,255,.2)}
+.pricing-features li.no{color:rgba(255,255,255,.25)}
+.pricing-card.featured .pricing-features li.no{color:rgba(255,255,255,.4)}
+.btn-pricing{width:100%;background:rgba(255,255,255,.1);color:#fff;border:1px solid rgba(255,255,255,.15);border-radius:8px;padding:.75rem;font-size:.875rem;font-weight:600;font-family:var(--sans);cursor:pointer;transition:all .2s}
+.btn-pricing:hover{background:rgba(255,255,255,.2)}
+.pricing-card.featured .btn-pricing{background:#fff;color:var(--accent);border-color:transparent}
+.pricing-card.featured .btn-pricing:hover{background:rgba(255,255,255,.9)}
+
+/* LEGAL */
+.legal-section{background:linear-gradient(135deg,var(--accent-light),#f0f0ff);padding:4rem 2rem;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.legal-inner{max-width:900px;margin:0 auto;display:grid;grid-template-columns:auto 1fr;gap:3rem;align-items:center}
+.legal-icon{font-size:4rem;line-height:1}
+.legal-title{font-size:1.5rem;font-weight:800;color:var(--ink);margin-bottom:.5rem;letter-spacing:-.02em}
+.legal-text{font-size:.9rem;color:var(--ink2);line-height:1.7}
+.legal-date{display:inline-block;background:var(--accent);color:#fff;font-family:var(--mono);font-size:.75rem;padding:.3rem .8rem;border-radius:6px;margin-top:.75rem}
+
+/* TESTIMONIALS */
+.testimonials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem}
+.testimonial-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:1.75rem;display:flex;flex-direction:column}
+.testimonial-text{flex:1}
+.testimonial-stars{color:#f59e0b;font-size:.9rem;margin-bottom:.75rem}
+.testimonial-text{font-size:.9rem;color:var(--ink2);line-height:1.7;margin-bottom:1rem;font-style:italic}
+.testimonial-author{font-size:.8rem;font-weight:700;color:var(--ink)}
+.testimonial-role{font-size:.75rem;font-family:var(--mono);color:var(--ink3)}
+
+/* FAQ */
+.faq-list{margin-top:2.5rem;display:flex;flex-direction:column;gap:.75rem;max-width:720px}
+.faq-item{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden}
+.faq-q{width:100%;background:none;border:none;padding:1.1rem 1.25rem;font-size:.95rem;font-weight:600;font-family:var(--sans);color:var(--ink);cursor:pointer;display:flex;justify-content:space-between;align-items:center;text-align:left}
+.faq-q::after{content:'+';font-size:1.2rem;color:var(--accent);font-weight:400;flex-shrink:0}
+.faq-q.open::after{content:'−'}
+.faq-a{padding:0 1.25rem;max-height:0;overflow:hidden;transition:all .3s;font-size:.875rem;color:var(--ink2);line-height:1.7}
+.faq-a.open{padding:0 1.25rem 1.1rem;max-height:200px}
+
+/* CTA SECTION */
+.cta-section{background:var(--accent);padding:5rem 2rem;text-align:center}
+.cta-title{font-size:clamp(1.8rem,3vw,2.8rem);font-weight:800;color:#fff;letter-spacing:-.03em;margin-bottom:1rem}
+.cta-sub{font-size:1rem;color:rgba(255,255,255,.75);margin-bottom:2.5rem}
+.btn-cta-white{background:#fff;color:var(--accent);border:none;border-radius:10px;padding:1rem 2.5rem;font-size:1rem;font-weight:700;font-family:var(--sans);cursor:pointer;transition:all .2s;text-decoration:none;display:inline-block}
+.btn-cta-white:hover{background:rgba(255,255,255,.9);transform:translateY(-2px)}
+.cta-note{font-size:.8rem;font-family:var(--mono);color:rgba(255,255,255,.5);margin-top:1rem}
+
+/* FOOTER */
+footer{background:var(--ink);padding:3rem 2rem}
+.footer-inner{max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1.5rem}
+.footer-logo{font-size:1.1rem;font-weight:800;color:#fff;letter-spacing:-.02em}
+.footer-logo span{color:var(--accent2)}
+.footer-links{display:flex;gap:2rem}
+.footer-links a{font-size:.8rem;color:rgba(255,255,255,.4);text-decoration:none;transition:color .2s}
+.footer-links a:hover{color:rgba(255,255,255,.8)}
+.footer-copy{font-size:.75rem;font-family:var(--mono);color:rgba(255,255,255,.25)}
+
+/* MODAL */
+.modal-overlay{position:fixed;inset:0;background:rgba(14,14,20,.7);display:none;align-items:center;justify-content:center;z-index:200;padding:1rem;backdrop-filter:blur(4px)}
+.modal-overlay.open{display:flex}
+.modal-box{background:#fff;border-radius:20px;padding:2.5rem;width:100%;max-width:480px;position:relative}
+.modal-close{position:absolute;top:1rem;right:1rem;background:none;border:none;font-size:1.5rem;cursor:pointer;color:var(--ink3);line-height:1}
+.modal-title{font-size:1.5rem;font-weight:800;color:var(--ink);margin-bottom:.35rem;letter-spacing:-.02em}
+.modal-sub{font-size:.85rem;color:var(--ink2);margin-bottom:2rem}
+.modal-plan-selector{display:grid;grid-template-columns:repeat(3,1fr);gap:.5rem;margin-bottom:1.5rem}
+.plan-opt{border:1.5px solid var(--border);border-radius:8px;padding:.6rem;text-align:center;cursor:pointer;transition:all .2s}
+.plan-opt.selected{border-color:var(--accent);background:var(--accent-light)}
+.plan-opt-name{font-size:.8rem;font-weight:700;color:var(--ink)}
+.plan-opt-price{font-size:.7rem;font-family:var(--mono);color:var(--ink3)}
+.plan-opt.selected .plan-opt-price{color:var(--accent)}
+.form-group{margin-bottom:1rem}
+.form-label{font-size:.75rem;font-family:var(--mono);color:var(--ink2);display:block;margin-bottom:.4rem}
+.form-input{width:100%;background:var(--bg);border:1.5px solid var(--border);border-radius:8px;padding:.75rem 1rem;font-size:.9rem;font-family:var(--sans);color:var(--ink);outline:none;transition:border-color .2s}
+.form-input:focus{border-color:var(--accent)}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:.75rem}
+.btn-submit{width:100%;background:var(--accent);color:#fff;border:none;border-radius:10px;padding:.9rem;font-size:1rem;font-weight:700;font-family:var(--sans);cursor:pointer;transition:all .2s;margin-top:.5rem}
+.btn-submit:hover{background:var(--accent2)}
+.form-note{font-size:.75rem;font-family:var(--mono);color:var(--ink3);text-align:center;margin-top:.75rem}
+.success-msg{text-align:center;padding:2rem 0}
+.success-icon{font-size:3rem;margin-bottom:1rem}
+.success-title{font-size:1.2rem;font-weight:700;color:var(--ink);margin-bottom:.5rem}
+.success-text{font-size:.875rem;color:var(--ink2)}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  .hero-inner{grid-template-columns:1fr;gap:2rem}
+  .hero-mockup{display:none}
+  .features-grid,.how-grid,.pricing-grid,.testimonials-grid{grid-template-columns:1fr}
+  .testimonial-card{min-height:unset}
+  .stats-bar-inner{grid-template-columns:repeat(2,1fr)}
+  .how-grid::before{display:none}
+  .legal-inner{grid-template-columns:1fr}
+  .legal-icon{display:none}
+  .pricing-card.featured{transform:none}
+  nav .nav-links{display:none}
+  .footer-inner{flex-direction:column;text-align:center}
+  .form-row{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">Hor<span>aly</span></a>
+    <div class="nav-links">
+      <a href="#features" data-fr="Fonctionnalités" data-nl="Functies">Fonctionnalités</a>
+      <a href="#pricing" data-fr="Tarifs" data-nl="Tarieven">Tarifs</a>
+      <a href="#faq" data-fr="FAQ" data-nl="FAQ">FAQ</a>
+      <div class="lang-toggle">
+        <button class="lang-btn active" onclick="setLang('fr')">FR</button>
+        <button class="lang-btn" onclick="setLang('nl')">NL</button>
+      </div>
+      <a href="./inscription.html" class="nav-cta" data-fr="S'inscrire" data-nl="Inschrijven">S'inscrire</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge" data-fr='<svg width="18" height="13" viewBox="0 0 18 13" style="border-radius:2px;flex-shrink:0" xmlns="http://www.w3.org/2000/svg"><rect width="6" height="13" fill="#1a1a1a"/><rect x="6" width="6" height="13" fill="#f5c518"/><rect x="12" width="6" height="13" fill="#cc0001"/></svg> Conçu pour les PME belges' data-nl='<svg width="18" height="13" viewBox="0 0 18 13" style="border-radius:2px;flex-shrink:0" xmlns="http://www.w3.org/2000/svg"><rect width="6" height="13" fill="#1a1a1a"/><rect x="6" width="6" height="13" fill="#f5c518"/><rect x="12" width="6" height="13" fill="#cc0001"/></svg> Ontworpen voor Belgische KMO&apos;s'><svg width="18" height="13" viewBox="0 0 18 13" style="border-radius:2px;flex-shrink:0" xmlns="http://www.w3.org/2000/svg"><rect width="6" height="13" fill="#1a1a1a"/><rect x="6" width="6" height="13" fill="#f5c518"/><rect x="12" width="6" height="13" fill="#cc0001"/></svg> Conçu pour les PME belges</div>
+      <h1 data-fr="Soyez conforme à l'obligation belge 2027 <em>en 10 minutes</em>" data-nl="Voldoe aan de Belgische verplichting 2027 <em>in 10 minuten</em>">Soyez conforme à l'obligation belge 2027 <em>en 10 minutes</em></h1>
+      <p data-fr="Vos ouvriers pointent avec un code PIN. Vous récupérez les heures, les anomalies et les exports en quelques clics — depuis votre PC, tablette ou smartphone." data-nl="Uw arbeiders klokken in met een pincode. U recupereert de uren, anomalieën en exports in enkele klikken — vanuit uw pc, tablet of smartphone.">Vos ouvriers pointent avec un code PIN. Vous récupérez les heures, les anomalies et les exports en quelques clics — depuis votre PC, tablette ou smartphone.</p>
+      <div class="hero-actions">
+        <a href="./inscription.html" class="btn-primary" data-fr="Créer mon compte gratuit" data-nl="Mijn gratis account aanmaken">Créer mon compte gratuit</a>
+        <a href="#how" class="btn-secondary" data-fr="Voir comment ça marche" data-nl="Bekijk hoe het werkt">Voir comment ça marche</a>
+      </div>
+      <div class="hero-sub">
+        <span data-fr="✓ Essai 14 jours gratuit" data-nl="✓ 14 dagen gratis proberen">✓ Essai 14 jours gratuit</span>
+        <span style="color:var(--border)">·</span>
+        <span data-fr="✓ Sans carte bancaire" data-nl="✓ Geen bankkaart">✓ Sans carte bancaire</span>
+        <span style="color:var(--border)">·</span>
+        <span data-fr="✓ Support belge" data-nl="✓ Belgische support">✓ Support belge</span>
+        <span style="color:var(--border)">·</span>
+        <span data-fr="✓ Conformité garantie" data-nl="✓ Conformiteit gegarandeerd">✓ Conformité garantie</span>
+      </div>
+    </div>
+    <div class="hero-mockup">
+      <div class="mockup-card" style="min-height:300px">
+        <div class="mockup-header">
+          <div class="mockup-logo">HOR<span>ALY</span></div>
+          <div class="mockup-time" id="live-clock">08:42:17</div>
+        </div>
+        <div style="display:flex;gap:.35rem;margin-bottom:.85rem">
+          <div class="scene-dot active" id="sdot-0"></div>
+          <div class="scene-dot" id="sdot-1"></div>
+          <div class="scene-dot" id="sdot-2"></div>
+          <div class="scene-dot" id="sdot-3"></div>
+        </div>
+
+        <!-- SCÉNARIO 1 : PIN → Début de journée -->
+        <div id="scene-0">
+          <div id="pin-screen">
+            <div style="text-align:center;margin-bottom:.7rem">
+              <div style="width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-size:.9rem;font-weight:700;color:#fff;margin:0 auto .4rem">JD</div>
+              <div style="font-size:.8rem;font-weight:600;color:#fff">Jean Dupont</div>
+              <div style="font-size:.63rem;font-family:var(--mono);color:rgba(255,255,255,.35)" data-fr="Entrez votre code PIN" data-nl="Voer uw pincode in">Entrez votre code PIN</div>
+            </div>
+            <div style="display:flex;justify-content:center;gap:.5rem;margin-bottom:.7rem">
+              <div class="pin-dot" id="pd1"></div><div class="pin-dot" id="pd2"></div>
+              <div class="pin-dot" id="pd3"></div><div class="pin-dot" id="pd4"></div>
+            </div>
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:.28rem;max-width:155px;margin:0 auto">
+              <div class="mock-key" id="k1">1</div><div class="mock-key" id="k2">2</div><div class="mock-key" id="k3">3</div>
+              <div class="mock-key" id="k4">4</div><div class="mock-key" id="k5">5</div><div class="mock-key" id="k6">6</div>
+              <div class="mock-key" id="k7">7</div><div class="mock-key" id="k8">8</div><div class="mock-key" id="k9">9</div>
+              <div></div><div class="mock-key" id="k0">0</div><div></div>
+            </div>
+          </div>
+          <div id="success-screen" style="display:none;text-align:center">
+            <div style="display:flex;align-items:center;gap:.5rem;margin-bottom:.55rem">
+              <div style="width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-size:.65rem;font-weight:700;color:#fff;flex-shrink:0">JD</div>
+              <div style="text-align:left">
+                <div style="font-size:.76rem;font-weight:700;color:#fff">Jean Dupont</div>
+                <div style="font-size:.6rem;font-family:var(--mono);color:rgba(255,255,255,.35)" id="success-time"></div>
+              </div>
+            </div>
+            <div id="action-buttons" style="display:flex;flex-direction:column;gap:.3rem">
+              <button id="btn-debut" style="width:100%;background:rgba(5,150,105,.2);border:1px solid rgba(5,150,105,.4);border-radius:7px;padding:.42rem;font-size:.73rem;font-weight:700;font-family:var(--mono);color:#34d399;cursor:default;transition:all .2s" data-fr="▶ Début de journée" data-nl="▶ Begin van dag">▶ Début de journée</button>
+              <button style="width:100%;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:7px;padding:.42rem;font-size:.73rem;font-family:var(--mono);color:rgba(255,255,255,.25);cursor:default" data-fr="⏸ Pause" data-nl="⏸ Pauze">⏸ Pause</button>
+            </div>
+            <div id="action-confirm" style="display:none;animation:popIn .35s cubic-bezier(.34,1.56,.64,1)">
+              <div style="font-size:1.5rem;margin-bottom:.2rem">✅</div>
+              <div style="font-size:.8rem;font-weight:700;color:#fff" data-fr="Bonne journée, Jean !" data-nl="Goede dag, Pieter!">Bonne journée, Jean !</div>
+              <div style="font-size:.6rem;font-family:var(--mono);color:rgba(255,255,255,.35)" data-fr="Journée démarrée" data-nl="Dag gestart">Journée démarrée</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SCÉNARIO 2 : Dashboard admin -->
+        <div id="scene-1" style="display:none">
+          <div style="font-size:.58rem;font-family:var(--mono);color:rgba(255,255,255,.35);letter-spacing:.08em;margin-bottom:.45rem" data-fr="TABLEAU DE BORD — EN CE MOMENT" data-nl="DASHBOARD — OP DIT MOMENT">TABLEAU DE BORD — EN CE MOMENT</div>
+          <div style="display:flex;flex-direction:column;gap:.3rem;margin-bottom:.6rem">
+            <div style="background:rgba(5,150,105,.08);border:1px solid rgba(5,150,105,.2);border-radius:7px;padding:.4rem .6rem;display:flex;align-items:center;justify-content:space-between">
+              <div style="display:flex;align-items:center;gap:.45rem">
+                <div style="width:24px;height:24px;border-radius:50%;background:linear-gradient(135deg,#059669,#34d399);display:flex;align-items:center;justify-content:center;font-size:.58rem;font-weight:700;color:#fff">JD</div>
+                <div><div style="font-size:.7rem;font-weight:600;color:#fff">Jean Dupont</div><div style="font-size:.56rem;font-family:var(--mono);color:rgba(255,255,255,.35)" data-fr="depuis 08:30" data-nl="sinds 08:30">depuis 08:30</div></div>
+              </div>
+              <span style="font-size:.58rem;font-family:var(--mono);padding:.12rem .4rem;border-radius:4px;background:rgba(5,150,105,.2);color:#34d399" data-fr="Au travail" data-nl="Aan het werk">Au travail</span>
+            </div>
+            <div style="background:rgba(217,119,6,.08);border:1px solid rgba(217,119,6,.2);border-radius:7px;padding:.4rem .6rem;display:flex;align-items:center;justify-content:space-between">
+              <div style="display:flex;align-items:center;gap:.45rem">
+                <div style="width:24px;height:24px;border-radius:50%;background:linear-gradient(135deg,#d97706,#fbbf24);display:flex;align-items:center;justify-content:center;font-size:.58rem;font-weight:700;color:#fff">SM</div>
+                <div><div style="font-size:.7rem;font-weight:600;color:#fff">Sophie Martin</div><div style="font-size:.56rem;font-family:var(--mono);color:rgba(255,255,255,.35)" data-fr="pause 10:15" data-nl="pauze 10:15">pause 10:15</div></div>
+              </div>
+              <span style="font-size:.58rem;font-family:var(--mono);padding:.12rem .4rem;border-radius:4px;background:rgba(217,119,6,.2);color:#fbbf24" data-fr="En pause" data-nl="Op pauze">En pause</span>
+            </div>
+            <div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:7px;padding:.4rem .6rem;display:flex;align-items:center;justify-content:space-between">
+              <div style="display:flex;align-items:center;gap:.45rem">
+                <div style="width:24px;height:24px;border-radius:50%;background:#374151;display:flex;align-items:center;justify-content:center;font-size:.58rem;font-weight:700;color:#fff">PL</div>
+                <div><div style="font-size:.7rem;font-weight:600;color:#fff">Pierre Lambert</div><div style="font-size:.56rem;color:rgba(255,255,255,.2)">—</div></div>
+              </div>
+              <span style="font-size:.58rem;font-family:var(--mono);padding:.12rem .4rem;border-radius:4px;background:rgba(255,255,255,.05);color:rgba(255,255,255,.3)" data-fr="Absent" data-nl="Afwezig">Absent</span>
+            </div>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:.3rem">
+            <div style="background:rgba(255,255,255,.04);border-radius:6px;padding:.35rem;text-align:center"><div style="font-size:.85rem;font-weight:700;color:#fff;font-family:var(--mono)">2</div><div style="font-size:.52rem;color:rgba(255,255,255,.3);font-family:var(--mono)" data-fr="Actifs" data-nl="Actief">Actifs</div></div>
+            <div style="background:rgba(255,255,255,.04);border-radius:6px;padding:.35rem;text-align:center"><div style="font-size:.85rem;font-weight:700;color:#fff;font-family:var(--mono)">5h24</div><div style="font-size:.52rem;color:rgba(255,255,255,.3);font-family:var(--mono)" data-fr="Ce jour" data-nl="Vandaag">Ce jour</div></div>
+            <div style="background:rgba(255,255,255,.04);border-radius:6px;padding:.35rem;text-align:center"><div style="font-size:.85rem;font-weight:700;color:#34d399;font-family:var(--mono)">0</div><div style="font-size:.52rem;color:rgba(255,255,255,.3);font-family:var(--mono)" data-fr="Anomalies" data-nl="Anomalieën">Anomalies</div></div>
+          </div>
+        </div>
+
+        <!-- SCÉNARIO 3 : Email anomalie 19h -->
+        <div id="scene-2" style="display:none">
+          <div style="background:rgba(255,255,255,.04);border-radius:8px;overflow:hidden">
+            <div style="background:rgba(255,255,255,.06);padding:.45rem .65rem;display:flex;align-items:center;gap:.35rem">
+              <div style="width:16px;height:16px;border-radius:3px;background:var(--accent);display:flex;align-items:center;justify-content:center;font-size:.5rem;font-weight:700;color:#fff;flex-shrink:0">H</div>
+              <div>
+                <div style="font-size:.65rem;font-weight:600;color:#fff" data-fr="Horaly — 2 anomalies détectées" data-nl="Horaly — 2 anomalieën gedetecteerd">Horaly — 2 anomalies détectées</div>
+                <div style="font-size:.56rem;color:rgba(255,255,255,.35)">bonjour@horaly.be · 19:00</div>
+              </div>
+            </div>
+            <div style="padding:.5rem .65rem;display:flex;flex-direction:column;gap:.35rem">
+              <div style="font-size:.58rem;color:rgba(255,255,255,.4);letter-spacing:.06em;font-family:var(--mono)" data-fr="SESSION NON CLÔTURÉE" data-nl="NIET AFGESLOTEN SESSIE">SESSION NON CLÔTURÉE</div>
+              <div style="background:rgba(220,38,38,.1);border:1px solid rgba(220,38,38,.25);border-radius:5px;padding:.35rem .55rem;display:flex;align-items:center;gap:.4rem">
+                <div style="width:5px;height:5px;border-radius:50%;background:#f87171;flex-shrink:0"></div>
+                <div>
+                  <div style="font-size:.65rem;font-weight:600;color:#fff">Sophie Martin</div>
+                  <div style="font-size:.55rem;color:rgba(255,255,255,.4)" data-fr="Débutée à 07:45 · fin prévue 14:30" data-nl="Gestart om 07:45 · verwacht 14:30">Débutée à 07:45 · fin prévue 14:30</div>
+                </div>
+              </div>
+              <div style="font-size:.58rem;color:rgba(255,255,255,.4);letter-spacing:.06em;font-family:var(--mono)" data-fr="CORRECTIONS MANUELLES" data-nl="HANDMATIGE CORRECTIES">CORRECTIONS MANUELLES</div>
+              <div style="background:rgba(245,158,11,.08);border:1px solid rgba(245,158,11,.2);border-radius:5px;padding:.35rem .55rem;display:flex;align-items:center;gap:.4rem">
+                <div style="width:5px;height:5px;border-radius:50%;background:#fbbf24;flex-shrink:0"></div>
+                <div>
+                  <div style="font-size:.65rem;font-weight:600;color:#fff">Jean Dupont</div>
+                  <div style="font-size:.55rem;color:rgba(255,255,255,.4)" data-fr="3 correction(s) de pause" data-nl="3 pauzeaanpassing(en)">3 correction(s) de pause</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SCÉNARIO 4 : Coût salarial temps réel -->
+        <div id="scene-3" style="display:none;text-align:center;padding:.15rem 0">
+          <div style="font-size:.58rem;font-family:var(--mono);color:rgba(255,255,255,.35);letter-spacing:.08em;margin-bottom:.6rem" data-fr="COÛT SALARIAL — CE MOIS" data-nl="LOONKOST — DEZE MAAND">COÛT SALARIAL — CE MOIS</div>
+          <div style="font-size:2rem;font-weight:800;color:#fff;font-family:var(--mono);letter-spacing:-.03em;margin-bottom:.2rem"><span id="salary-counter">0</span><span style="color:var(--accent2)">€</span></div>
+          <div style="font-size:.6rem;color:rgba(255,255,255,.35);font-family:var(--mono);margin-bottom:.75rem" data-fr="estimé en temps réel" data-nl="real-time geschat">estimé en temps réel</div>
+          <div style="display:flex;flex-direction:column;gap:.3rem">
+            <div style="background:rgba(255,255,255,.04);border-radius:6px;padding:.4rem .65rem;display:flex;justify-content:space-between;align-items:center">
+              <div style="display:flex;align-items:center;gap:.35rem">
+                <div style="width:18px;height:18px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-size:.52rem;font-weight:700;color:#fff">JD</div>
+                <span style="font-size:.68rem;color:#fff">Jean Dupont</span>
+              </div>
+              <span style="font-size:.68rem;font-family:var(--mono);color:var(--accent2)" id="cost-jd">0€</span>
+            </div>
+            <div style="background:rgba(255,255,255,.04);border-radius:6px;padding:.4rem .65rem;display:flex;justify-content:space-between;align-items:center">
+              <div style="display:flex;align-items:center;gap:.35rem">
+                <div style="width:18px;height:18px;border-radius:50%;background:linear-gradient(135deg,#d97706,#fbbf24);display:flex;align-items:center;justify-content:center;font-size:.52rem;font-weight:700;color:#fff">SM</div>
+                <span style="font-size:.68rem;color:#fff">Sophie Martin</span>
+              </div>
+              <span style="font-size:.68rem;font-family:var(--mono);color:var(--accent2)" id="cost-sm">0€</span>
+            </div>
+            <div style="background:rgba(255,255,255,.04);border-radius:6px;padding:.4rem .65rem;display:flex;justify-content:space-between;align-items:center">
+              <div style="display:flex;align-items:center;gap:.35rem">
+                <div style="width:18px;height:18px;border-radius:50%;background:#374151;display:flex;align-items:center;justify-content:center;font-size:.52rem;font-weight:700;color:#fff">PL</div>
+                <span style="font-size:.68rem;color:#fff">Pierre Lambert</span>
+              </div>
+              <span style="font-size:.68rem;font-family:var(--mono);color:var(--accent2)" id="cost-pl">0€</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="floating-badge" id="floating-badge" data-fr="Données synchronisées" data-nl="Gegevens gesynchroniseerd">Données synchronisées</div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stats-bar-inner">
+    <div class="stat-item">
+      <div class="stat-item-val">10<span>min</span></div>
+      <div class="stat-item-lbl" data-fr="Installation complète" data-nl="Volledige installatie">Installation complète</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-item-val">3<span>sec</span></div>
+      <div class="stat-item-lbl" data-fr="Pour pointer" data-nl="Om in te klokken">Pour pointer</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-item-val">100<span>%</span></div>
+      <div class="stat-item-lbl" data-fr="Conforme loi belge 2027" data-nl="Conform Belgische wet 2027">Conforme loi belge 2027</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-item-val">100<span>%</span></div>
+      <div class="stat-item-lbl" data-fr="Déductible fiscalement" data-nl="Fiscaal aftrekbaar">Déductible fiscalement</div>
+    </div>
+  </div>
+</div>
+
+<!-- LEGAL ALERT -->
+<div class="legal-section">
+  <div class="legal-inner">
+    <div class="legal-icon">⚖️</div>
+    <div>
+      <div class="legal-title" data-fr="Obligation légale dès le 1er janvier 2027" data-nl="Wettelijke verplichting vanaf 1 januari 2027">Obligation légale dès le 1er janvier 2027</div>
+      <p class="legal-text" data-fr="Tout employeur belge devra disposer d'un système objectif, fiable et flexible pour enregistrer le temps de travail journalier de chaque travailleur. Sans système en place, vous risquez des sanctions. Horaly vous met en conformité en 10 minutes." data-nl="Elke Belgische werkgever moet beschikken over een objectief, betrouwbaar en flexibel systeem voor de registratie van de dagelijkse arbeidstijd van elke werknemer. Zonder systeem riskeert u sancties. Horaly brengt u in 10 minuten in orde.">Tout employeur belge devra disposer d'un système objectif, fiable et flexible pour enregistrer le temps de travail journalier de chaque travailleur. Sans système en place, vous risquez des sanctions. Horaly vous met en conformité en 10 minutes.</p>
+      <span class="legal-date">Deadline : 01/01/2027</span>
+    </div>
+  </div>
+</div>
+
+<!-- POURQUOI CHANGER MAINTENANT -->
+<div style="background:var(--bg2);border-bottom:1px solid var(--border);padding:3.5rem 2rem">
+  <div class="section-inner">
+    <div class="section-eyebrow" data-fr="Dès le 1er janvier 2027" data-nl="Vanaf 1 januari 2027">Dès le 1er janvier 2027</div>
+    <div class="section-title" data-fr="Pourquoi agir maintenant ?" data-nl="Waarom nu handelen?">Pourquoi agir maintenant ?</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:2rem">
+      <div style="background:#fff5f5;border:1px solid #fecaca;border-radius:var(--radius);padding:1.5rem">
+        <div style="font-size:.75rem;font-weight:700;color:var(--red);letter-spacing:.08em;margin-bottom:1rem;font-family:var(--mono)" data-fr="SANS HORALY" data-nl="ZONDER HORALY">SANS HORALY</div>
+        <div style="display:flex;flex-direction:column;gap:.7rem">
+          <div style="display:flex;align-items:flex-start;gap:.6rem;font-size:.88rem;color:var(--ink2)"><span style="color:var(--red);flex-shrink:0;font-weight:700">✗</span><span data-fr="Feuilles papier — compliquées, illisibles, perdues" data-nl="Papieren formulieren — ingewikkeld, onleesbaar, verloren">Feuilles papier — compliquées, illisibles, perdues</span></div>
+          <div style="display:flex;align-items:flex-start;gap:.6rem;font-size:.88rem;color:var(--ink2)"><span style="color:var(--red);flex-shrink:0;font-weight:700">✗</span><span data-fr="Risque d'oublis et d'erreurs sur les salaires" data-nl="Risico op vergissingen en fouten in de lonen">Risque d'oublis et d'erreurs sur les salaires</span></div>
+          <div style="display:flex;align-items:flex-start;gap:.6rem;font-size:.88rem;color:var(--ink2)"><span style="color:var(--red);flex-shrink:0;font-weight:700">✗</span><span data-fr="Contrôles plus stricts dès 2027 — sanctions possibles" data-nl="Strengere controles vanaf 2027 — mogelijke sancties">Contrôles plus stricts dès 2027 — sanctions possibles</span></div>
+          <div style="display:flex;align-items:flex-start;gap:.6rem;font-size:.88rem;color:var(--ink2)"><span style="color:var(--red);flex-shrink:0;font-weight:700">✗</span><span data-fr="Des heures perdues à reconstituer les prestations" data-nl="Uren verloren aan het reconstrueren van prestaties">Des heures perdues à reconstituer les prestations</span></div>
+        </div>
+      </div>
+      <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:var(--radius);padding:1.5rem">
+        <div style="font-size:.75rem;font-weight:700;color:var(--green);letter-spacing:.08em;margin-bottom:1rem;font-family:var(--mono)">AVEC HORALY</div>
+        <div style="display:flex;flex-direction:column;gap:.7rem">
+          <div style="display:flex;align-items:flex-start;gap:.6rem;font-size:.88rem;color:var(--ink2)"><span style="color:var(--green);flex-shrink:0;font-weight:700">✓</span><span data-fr="Enregistrement automatique — zéro papier, zéro oubli" data-nl="Automatische registratie — geen papier, geen vergissingen">Enregistrement automatique — zéro papier, zéro oubli</span></div>
+          <div style="display:flex;align-items:flex-start;gap:.6rem;font-size:.88rem;color:var(--ink2)"><span style="color:var(--green);flex-shrink:0;font-weight:700">✓</span><span data-fr="Heures exactes envoyées au secrétariat social en 1 clic" data-nl="Exacte uren naar het sociaal secretariaat in 1 klik">Heures exactes envoyées au secrétariat social en 1 clic</span></div>
+          <div style="display:flex;align-items:flex-start;gap:.6rem;font-size:.88rem;color:var(--ink2)"><span style="color:var(--green);flex-shrink:0;font-weight:700">✓</span><span data-fr="Conforme à la loi dès l'installation — l'esprit tranquille" data-nl="Conform de wet vanaf installatie — gerust gemoed">Conforme à la loi dès l'installation — l'esprit tranquille</span></div>
+          <div style="display:flex;align-items:flex-start;gap:.6rem;font-size:.88rem;color:var(--ink2)"><span style="color:var(--green);flex-shrink:0;font-weight:700">✓</span><span data-fr="Alertes automatiques si un ouvrier oublie de pointer" data-nl="Automatische meldingen als een arbeider vergeet in te klokken">Alertes automatiques si un ouvrier oublie de pointer</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FEATURES -->
+<section id="features">
+  <div class="section-inner">
+    <div class="section-eyebrow" data-fr="Fonctionnalités" data-nl="Functies">Fonctionnalités</div>
+    <div class="section-title" data-fr="Tout ce dont vous avez besoin" data-nl="Alles wat u nodig heeft">Tout ce dont vous avez besoin</div>
+    <p class="section-sub" data-fr="Conçu pour les petits commerces, boulangeries, sandwicheries, et PME belges qui veulent une solution simple et efficace." data-nl="Ontworpen voor kleine winkels, bakkerijen en Belgische kmo's die een eenvoudige en effectieve oplossing willen.">Conçu pour les petits commerces, boulangeries, sandwicheries, et PME belges qui veulent une solution simple et efficace.</p>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">⏱️</div>
+        <div class="feature-title" data-fr="Vos ouvriers pointent en 3 secondes" data-nl="Uw arbeiders klokken in in 3 seconden">Vos ouvriers pointent en 3 secondes</div>
+        <p class="feature-desc" data-fr="Un code PIN à 4 chiffres sur la tablette partagée. Pas de smartphone, pas de badge, pas de formation. Chacun pointe et repart travailler." data-nl="Een 4-cijferige pincode op de gedeelde tablet. Geen smartphone, geen badge, geen opleiding. Iedereen klokt in en gaat aan het werk.">Un code PIN à 4 chiffres sur la tablette partagée. Pas de smartphone, pas de badge, pas de formation. Chacun pointe et repart travailler.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📶</div>
+        <div class="feature-title" data-fr="Aucun pointage perdu, même sans internet" data-nl="Geen registratie verloren, ook zonder internet">Aucun pointage perdu, même sans internet</div>
+        <p class="feature-desc" data-fr="Même sans connexion, les heures sont enregistrées localement sur la tablette, puis synchronisées automatiquement quand le réseau revient. Zéro perte, zéro doublon." data-nl="Ook zonder verbinding worden de uren lokaal opgeslagen op de tablet en automatisch gesynchroniseerd wanneer het netwerk terugkeert. Nul verlies, nul duplicaten.">Même sans connexion, les heures sont enregistrées localement sur la tablette, puis synchronisées automatiquement quand le réseau revient. Zéro perte, zéro doublon.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📄</div>
+        <div class="feature-title" data-fr="Envoyez les heures au secrétariat social en 1 clic" data-nl="Stuur de uren naar het sociaal secretariaat in 1 klik">Envoyez les heures au secrétariat social en 1 clic</div>
+        <p class="feature-desc" data-fr="Rapport PDF mensuel ou export CSV prêts à transmettre. Compatible avec tous les secrétariats sociaux belges. Votre comptable vous remerciera." data-nl="Maandelijks PDF-rapport of CSV-export klaar om door te sturen. Compatibel met alle Belgische sociale secretariaten. Uw boekhouder zal u dankbaar zijn.">Rapport PDF mensuel ou export CSV prêts à transmettre. Compatible avec tous les secrétariats sociaux belges. Votre comptable vous remerciera.</p>
+      </div>
+    </div>
+
+    <!-- Fonctionnalités Pro en vedette -->
+    <div style="margin-top:1rem;background:linear-gradient(135deg,#f3f0ff,#fafaff);border:1px solid rgba(79,70,229,.2);border-radius:var(--radius);padding:1.25rem 1.5rem">
+      <div style="font-size:.65rem;font-weight:700;letter-spacing:.1em;color:var(--accent);font-family:var(--mono);margin-bottom:1rem;text-transform:uppercase" data-fr="✦ Exclusif plan Pro" data-nl="✦ Exclusief Pro plan">✦ Exclusif plan Pro</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.25rem">
+        <div style="display:flex;gap:1rem;align-items:flex-start">
+          <div style="font-size:1.4rem;flex-shrink:0">🔔</div>
+          <div>
+            <div class="feature-title" style="margin-bottom:.35rem" data-fr="Ne courez plus après les oublis de pointage" data-nl="Geen gedoe meer met vergeten registraties">Ne courez plus après les oublis de pointage</div>
+            <p class="feature-desc" data-fr="Chaque soir à 19h, un email récapitule les anomalies : ouvrier qui n'a pas pointé sa fin, session trop longue, absence non justifiée. Vous corrigez en 2 clics." data-nl="Elke avond om 19u vat een e-mail de anomalieën samen: arbeider die niet heeft uitgelokt, te lange sessie, ongemotiveerde afwezigheid. U corrigeert in 2 klikken.">Chaque soir à 19h, un email récapitule les anomalies : ouvrier qui n'a pas pointé sa fin, session trop longue, absence non justifiée. Vous corrigez en 2 clics.</p>
+          </div>
+        </div>
+        <div style="display:flex;gap:1rem;align-items:flex-start">
+          <div style="font-size:1.4rem;flex-shrink:0">📅</div>
+          <div>
+            <div class="feature-title" style="margin-bottom:.35rem" data-fr="Fini les faux oublis — le planning fait foi" data-nl="Geen valse vergissingen meer — de planning is maatgevend">Fini les faux oublis — le planning fait foi</div>
+            <p class="feature-desc" data-fr="Définissez les horaires habituels de chaque ouvrier. Horaly sait qui devait être là et qui ne l'était pas — sans vérifier manuellement chaque jour." data-nl="Stel de gebruikelijke roosters van elke arbeider in. Horaly weet wie er moest zijn en wie er niet was — zonder dagelijkse handmatige controle.">Définissez les horaires habituels de chaque ouvrier. Horaly sait qui devait être là et qui ne l'était pas — sans vérifier manuellement chaque jour.</p>
+          </div>
+        </div>
+        <div style="display:flex;gap:1rem;align-items:flex-start">
+          <div style="font-size:1.4rem;flex-shrink:0">📷</div>
+          <div>
+            <div class="feature-title" style="margin-bottom:.35rem" data-fr="Soyez certain que c'est bien votre ouvrier qui pointe" data-nl="Wees zeker dat het uw eigen arbeider is die inklokt">Soyez certain que c'est bien votre ouvrier qui pointe</div>
+            <p class="feature-desc" data-fr="Une photo selfie au pointage garantit que chacun pointe pour lui-même — et pas un collègue à sa place. Consultable depuis votre panneau admin à tout moment." data-nl="Een selfie bij het inloggen garandeert dat iedereen voor zichzelf inklokt — en niet een collega in zijn plaats. Raadpleegbaar vanuit uw beheerpaneel op elk moment.">Une photo selfie au pointage garantit que chacun pointe pour lui-même — et pas un collègue à sa place. Consultable depuis votre panneau admin à tout moment.</p>
+          </div>
+        </div>
+        <div style="display:flex;gap:1rem;align-items:flex-start">
+          <div style="font-size:1.4rem;flex-shrink:0">💶</div>
+          <div>
+            <div class="feature-title" style="margin-bottom:.35rem" data-fr="Sachez à tout moment ce que vous dépensez en personnel" data-nl="Weet op elk moment wat u aan personeel uitgeeft">Sachez à tout moment ce que vous dépensez en personnel</div>
+            <p class="feature-desc" data-fr="Horaly calcule le coût salarial en temps réel, heure par heure, ouvrier par ouvrier. Fini les mauvaises surprises en fin de mois — vous pilotez votre masse salariale au quotidien." data-nl="Horaly berekent de loonkost in real time, uur per uur, arbeider per arbeider. Geen onaangename verrassingen meer op het einde van de maand — u beheert uw loonmassa dagelijks.">Horaly calcule le coût salarial en temps réel, heure par heure, ouvrier par ouvrier. Fini les mauvaises surprises en fin de mois — vous pilotez votre masse salariale au quotidien.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how" style="background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
+  <div class="section-inner">
+    <div class="section-eyebrow" data-fr="Installation" data-nl="Installatie">Installation</div>
+    <div class="section-title" data-fr="Opérationnel en 10 minutes" data-nl="Operationeel in 10 minuten">Opérationnel en 10 minutes</div>
+    <div class="how-grid">
+      <div class="how-step">
+        <div class="how-num">1</div>
+        <div class="how-title" data-fr="Créez votre compte" data-nl="Maak uw account aan">Créez votre compte</div>
+        <p class="how-desc" data-fr="Inscrivez-vous en 2 minutes. Aucune carte de crédit requise pour l'essai." data-nl="Registreer in 2 minuten. Geen creditcard vereist voor de proefperiode.">Inscrivez-vous en 2 minutes. Aucune carte de crédit requise pour l'essai.</p>
+      </div>
+      <div class="how-step">
+        <div class="how-num">2</div>
+        <div class="how-title" data-fr="Ajoutez vos ouvriers" data-nl="Voeg uw werknemers toe">Ajoutez vos ouvriers</div>
+        <p class="how-desc" data-fr="Créez un profil et un code PIN pour chaque membre de votre équipe en quelques secondes." data-nl="Maak in enkele seconden een profiel en pincode aan voor elk teamlid.">Créez un profil et un code PIN pour chaque membre de votre équipe en quelques secondes.</p>
+      </div>
+      <div class="how-step">
+        <div class="how-num">3</div>
+        <div class="how-title" data-fr="Installez sur une tablette" data-nl="Installeer op een tablet">Installez sur une tablette</div>
+        <p class="how-desc" data-fr="Ouvrez Horaly sur n'importe quelle tablette Android ou iPad. Ajoutez à l'écran d'accueil. C'est prêt !" data-nl="Open Horaly op een Android-tablet of iPad. Voeg toe aan het startscherm. Klaar!">Ouvrez Horaly sur n'importe quelle tablette Android ou iPad. Ajoutez à l'écran d'accueil. C'est prêt !</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing">
+  <div class="section-inner">
+    <div class="section-eyebrow" data-fr="Tarifs" data-nl="Tarieven">Tarifs</div>
+    <div class="section-title" data-fr="Simple et transparent" data-nl="Eenvoudig en transparant">Simple et transparent</div>
+    <p class="section-sub" data-fr="Sans engagement, sans frais cachés. Changez de plan à tout moment." data-nl="Zonder engagement, zonder verborgen kosten. Wijzig uw plan op elk moment.">Sans engagement, sans frais cachés. Changez de plan à tout moment.</p>
+
+    <!-- TOGGLE MENSUEL / ANNUEL -->
+    <div style="display:flex;align-items:center;justify-content:center;gap:1rem;margin-top:2rem">
+      <span id="lbl-mensuel" style="font-size:.9rem;font-weight:600;color:#fff" data-fr="Mensuel" data-nl="Maandelijks">Mensuel</span>
+      <button onclick="toggleBilling()" id="billing-toggle" style="width:52px;height:28px;border-radius:14px;border:none;background:var(--accent2);cursor:pointer;position:relative;transition:background .2s;flex-shrink:0">
+        <span id="billing-knob" style="position:absolute;top:4px;left:4px;width:20px;height:20px;background:#fff;border-radius:50%;transition:left .2s"></span>
+      </button>
+      <span id="lbl-annuel" style="font-size:.9rem;font-weight:600;color:rgba(255,255,255,.5)" data-fr="Annuel" data-nl="Jaarlijks">Annuel</span>
+      <span style="background:var(--accent2);color:#fff;font-size:.65rem;font-weight:700;font-family:var(--mono);padding:.2rem .6rem;border-radius:20px;letter-spacing:.04em" data-fr="2 MOIS OFFERTS" data-nl="2 MAANDEN GRATIS">2 MOIS OFFERTS</span>
+    </div>
+
+    <div class="pricing-grid">
+      <div class="pricing-card">
+        <div class="pricing-plan">STARTER</div>
+        <div class="pricing-price">
+          <span class="price-mensuel">19€</span><span class="price-annuel" style="display:none">190€</span><span class="price-period" data-fr="/mois" data-nl="/maand">/mois</span>
+        </div>
+        <div class="pricing-desc price-annuel-note" style="display:none;color:rgba(255,255,255,.5);font-size:.75rem;font-family:var(--mono);margin-top:-.5rem;margin-bottom:.75rem" data-fr="soit 15,83€/mois · 2 mois offerts" data-nl="= 15,83€/maand · 2 maanden gratis">soit 15,83€/mois · 2 mois offerts</div>
+        <div class="pricing-desc" data-fr="Jusqu'à 5 ouvriers" data-nl="Tot 5 werknemers">Jusqu'à 5 ouvriers</div>
+        <ul class="pricing-features">
+          <li data-fr="Pointage par code PIN" data-nl="Inklokken met pincode">Pointage par code PIN</li>
+          <li data-fr="Tableau de bord temps réel" data-nl="Realtime dashboard">Tableau de bord temps réel</li>
+          <li data-fr="Export PDF & CSV" data-nl="Export PDF & CSV">Export PDF & CSV</li>
+          <li data-fr="Mode hors-ligne complet" data-nl="Volledige offline modus">Mode hors-ligne complet</li>
+          <li data-fr="Correction manuelle" data-nl="Handmatige correctie">Correction manuelle</li>
+          <li data-fr="Audit log légal (5 ans)" data-nl="Wettelijk auditlog (5 jaar)">Audit log légal (5 ans)</li>
+          <li data-fr="Bilinguisme FR/NL" data-nl="Tweetalig FR/NL">Bilinguisme FR/NL</li>
+          <li class="no" data-fr="Alertes email anomalies" data-nl="E-mailmeldingen anomalieën">Alertes email anomalies</li>
+          <li class="no" data-fr="Planning hebdomadaire" data-nl="Weekplanning">Planning hebdomadaire</li>
+          <li class="no" data-fr="Photo anti-fraude" data-nl="Foto fraudepreventie">Photo anti-fraude</li>
+        </ul>
+        <a href="./inscription.html?plan=starter" class="btn-pricing" data-fr="Commencer l'essai" data-nl="Proefperiode starten">Commencer l'essai</a>
+      </div>
+
+      <div class="pricing-card featured">
+        <div class="pricing-badge" data-fr="Le plus populaire" data-nl="Meest populair">Le plus populaire</div>
+        <div class="pricing-plan">PRO</div>
+        <div class="pricing-price">
+          <span class="price-mensuel">39€</span><span class="price-annuel" style="display:none">390€</span><span class="price-period" data-fr="/mois" data-nl="/maand">/mois</span>
+        </div>
+        <div class="pricing-desc price-annuel-note" style="display:none;color:rgba(255,255,255,.7);font-size:.75rem;font-family:var(--mono);margin-top:-.5rem;margin-bottom:.75rem" data-fr="soit 32,50€/mois · 2 mois offerts" data-nl="= 32,50€/maand · 2 maanden gratis">soit 32,50€/mois · 2 mois offerts</div>
+        <div class="pricing-desc" data-fr="Jusqu'à 20 ouvriers" data-nl="Tot 20 werknemers">Jusqu'à 20 ouvriers</div>
+        <ul class="pricing-features">
+          <li data-fr="Tout du Starter" data-nl="Alles van Starter">Tout du Starter</li>
+          <li data-fr="Alertes email anomalies (7 règles)" data-nl="E-mailmeldingen anomalieën (7 regels)">Alertes email anomalies (7 règles)</li>
+          <li data-fr="Planning hebdomadaire" data-nl="Weekplanning">Planning hebdomadaire</li>
+          <li data-fr="Self-service congés ouvriers" data-nl="Self-service verlof arbeiders">Self-service congés ouvriers</li>
+          <li data-fr="Photo anti-fraude" data-nl="Foto fraudepreventie">Photo anti-fraude</li>
+          <li data-fr="Fiche de paie par ouvrier" data-nl="Loonstrook per arbeider">Fiche de paie par ouvrier</li>
+          <li data-fr="Support prioritaire" data-nl="Prioriteitsondersteuning">Support prioritaire</li>
+          <li class="no" data-fr="Geofencing" data-nl="Geofencing">Geofencing</li>
+        </ul>
+        <a href="./inscription.html?plan=pro" class="btn-pricing" data-fr="Commencer l'essai" data-nl="Proefperiode starten">Commencer l'essai</a>
+      </div>
+
+      <div class="pricing-card">
+        <div class="pricing-plan">BUSINESS</div>
+        <div class="pricing-price">
+          <span class="price-mensuel">79€</span><span class="price-annuel" style="display:none">790€</span><span class="price-period" data-fr="/mois" data-nl="/maand">/mois</span>
+        </div>
+        <div class="pricing-desc price-annuel-note" style="display:none;color:rgba(255,255,255,.5);font-size:.75rem;font-family:var(--mono);margin-top:-.5rem;margin-bottom:.75rem" data-fr="soit 65,83€/mois · 2 mois offerts" data-nl="= 65,83€/maand · 2 maanden gratis">soit 65,83€/mois · 2 mois offerts</div>
+        <div class="pricing-desc" data-fr="Ouvriers illimités" data-nl="Onbeperkt werknemers">Ouvriers illimités</div>
+        <ul class="pricing-features">
+          <li data-fr="Tout du Pro" data-nl="Alles van Pro">Tout du Pro</li>
+          <li data-fr="Ouvriers illimités" data-nl="Onbeperkt werknemers">Ouvriers illimités</li>
+          <li data-fr="Geofencing" data-nl="Geofencing">Geofencing</li>
+          <li data-fr="Onboarding personnalisé" data-nl="Gepersonaliseerde onboarding">Onboarding personnalisé</li>
+          <li data-fr="Support dédié" data-nl="Toegewijde ondersteuning">Support dédié</li>
+        </ul>
+        <a href="./inscription.html?plan=business" class="btn-pricing" data-fr="Commencer l'essai" data-nl="Proefperiode starten">Commencer l'essai</a>
+      </div>
+    </div>
+    <p style="text-align:center;font-size:.78rem;color:rgba(255,255,255,.35);font-family:var(--mono);margin-top:1.5rem" data-fr="14 jours d'essai gratuit sur tous les plans · Aucune carte bancaire requise · 100% déductible en frais professionnels" data-nl="14 dagen gratis proefperiode op alle plannen · Geen bankkaart vereist · 100% aftrekbaar als beroepskosten">14 jours d'essai gratuit sur tous les plans · Aucune carte bancaire requise · 100% déductible en frais professionnels</p>
+  </div>
+</section>
+
+<!-- POURQUOI HORALY -->
+<section style="background:var(--bg2);border-top:1px solid var(--border)">
+  <div class="section-inner">
+    <div class="section-eyebrow" data-fr="🇧🇪 Fait en Belgique, pour la Belgique" data-nl="🇧🇪 Gemaakt in België, voor België">🇧🇪 Fait en Belgique, pour la Belgique</div>
+    <div class="section-title" data-fr="Pourquoi les PME belges choisissent Horaly" data-nl="Waarom Belgische KMO's kiezen voor Horaly">Pourquoi les PME belges choisissent Horaly</div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:2.5rem">
+      <div style="display:flex;align-items:flex-start;gap:.75rem;padding:1.25rem;background:var(--bg);border-radius:var(--radius);border:1px solid var(--border)">
+        <span style="color:var(--green);font-weight:800;flex-shrink:0;font-size:1.1rem">✓</span>
+        <div>
+          <div style="font-size:.9rem;font-weight:700;color:var(--ink);margin-bottom:.25rem" data-fr="Installation en 10 minutes" data-nl="Installatie in 10 minuten">Installation en 10 minutes</div>
+          <div style="font-size:.8rem;color:var(--ink3)" data-fr="Aucun technicien, aucune formation" data-nl="Geen technicus, geen opleiding">Aucun technicien, aucune formation</div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:flex-start;gap:.75rem;padding:1.25rem;background:var(--bg);border-radius:var(--radius);border:1px solid var(--border)">
+        <span style="color:var(--green);font-weight:800;flex-shrink:0;font-size:1.1rem">✓</span>
+        <div>
+          <div style="font-size:.9rem;font-weight:700;color:var(--ink);margin-bottom:.25rem" data-fr="Aucun matériel spécifique" data-nl="Geen specifieke hardware">Aucun matériel spécifique</div>
+          <div style="font-size:.8rem;color:var(--ink3)" data-fr="Une tablette Android ou iPad suffit" data-nl="Een Android-tablet of iPad volstaat">Une tablette Android ou iPad suffit</div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:flex-start;gap:.75rem;padding:1.25rem;background:var(--bg);border-radius:var(--radius);border:1px solid var(--border)">
+        <span style="color:var(--green);font-weight:800;flex-shrink:0;font-size:1.1rem">✓</span>
+        <div>
+          <div style="font-size:.9rem;font-weight:700;color:var(--ink);margin-bottom:.25rem" data-fr="Conforme à la loi belge 2027" data-nl="Conform de Belgische wet 2027">Conforme à la loi belge 2027</div>
+          <div style="font-size:.8rem;color:var(--ink3)" data-fr="Audit log, conservation 5 ans" data-nl="Auditlog, bewaring 5 jaar">Audit log, conservation 5 ans</div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:flex-start;gap:.75rem;padding:1.25rem;background:var(--bg);border-radius:var(--radius);border:1px solid var(--border)">
+        <span style="color:var(--green);font-weight:800;flex-shrink:0;font-size:1.1rem">✓</span>
+        <div>
+          <div style="font-size:.9rem;font-weight:700;color:var(--ink);margin-bottom:.25rem" data-fr="Support belge francophone & néerlandophone" data-nl="Belgische Franstalige & Nederlandstalige support">Support belge FR & NL</div>
+          <div style="font-size:.8rem;color:var(--ink3)" data-fr="Réponse par email sous 24h" data-nl="Antwoord per e-mail binnen 24u">Réponse par email sous 24h</div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:flex-start;gap:.75rem;padding:1.25rem;background:var(--bg);border-radius:var(--radius);border:1px solid var(--border)">
+        <span style="color:var(--green);font-weight:800;flex-shrink:0;font-size:1.1rem">✓</span>
+        <div>
+          <div style="font-size:.9rem;font-weight:700;color:var(--ink);margin-bottom:.25rem" data-fr="Données hébergées en Europe" data-nl="Gegevens opgeslagen in Europa">Données hébergées en Europe</div>
+          <div style="font-size:.8rem;color:var(--ink3)" data-fr="Frankfurt · RGPD · Jamais revendues" data-nl="Frankfurt · AVG · Nooit doorverkocht">Frankfurt · RGPD · Jamais revendues</div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:flex-start;gap:.75rem;padding:1.25rem;background:var(--bg);border-radius:var(--radius);border:1px solid var(--border)">
+        <span style="color:var(--green);font-weight:800;flex-shrink:0;font-size:1.1rem">✓</span>
+        <div>
+          <div style="font-size:.9rem;font-weight:700;color:var(--ink);margin-bottom:.25rem" data-fr="Essai gratuit 14 jours" data-nl="14 dagen gratis proberen">Essai gratuit 14 jours</div>
+          <div style="font-size:.8rem;color:var(--ink3)" data-fr="Sans carte bancaire, sans engagement" data-nl="Zonder bankkaart, zonder verbintenis">Sans carte bancaire, sans engagement</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="section-inner">
+    <div class="section-eyebrow">FAQ</div>
+    <div class="section-title" data-fr="Questions fréquentes" data-nl="Veelgestelde vragen">Questions fréquentes</div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)" data-fr="Horaly est-il vraiment conforme à la loi belge 2027 ?" data-nl="Is Horaly echt conform de Belgische wet van 2027?">Horaly est-il vraiment conforme à la loi belge 2027 ?</button>
+        <div class="faq-a" data-fr="Oui. Horaly enregistre de manière objective, fiable et accessible le temps de travail journalier de chaque travailleur, conformément aux exigences de la nouvelle réglementation belge qui entre en vigueur le 1er janvier 2027." data-nl="Ja. Horaly registreert op objectieve, betrouwbare en toegankelijke wijze de dagelijkse arbeidstijd van elke werknemer, conform de vereisten van de nieuwe Belgische regelgeving die op 1 januari 2027 in werking treedt.">Oui. Horaly enregistre de manière objective, fiable et accessible le temps de travail journalier de chaque travailleur, conformément aux exigences de la nouvelle réglementation belge qui entre en vigueur le 1er janvier 2027.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)" data-fr="De quel matériel ai-je besoin ?" data-nl="Welke apparatuur heb ik nodig?">De quel matériel ai-je besoin ?</button>
+        <div class="faq-a" data-fr="Une simple tablette Android ou iPad suffit pour la pointeuse. Vous gérez tout depuis votre PC, Mac ou smartphone via un navigateur web. Aucun achat de matériel spécifique n'est nécessaire." data-nl="Een eenvoudige Android-tablet of iPad volstaat voor de prikklok. U beheert alles vanuit uw pc, Mac of smartphone via een webbrowser. Er is geen specifieke hardware-aankoop vereist.">Une simple tablette Android ou iPad suffit pour la pointeuse. Vous gérez tout depuis votre PC, Mac ou smartphone via un navigateur web. Aucun achat de matériel spécifique n'est nécessaire.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)" data-fr="Mes données sont-elles sécurisées ?" data-nl="Zijn mijn gegevens veilig?">Mes données sont-elles sécurisées ?</button>
+        <div class="faq-a" data-fr="Absolument. Vos données sont stockées dans une base de données PostgreSQL sécurisée, hébergée en Europe. Les codes PIN sont chiffrés et ne sont jamais stockés en clair. Vos données vous appartiennent et vous pouvez les exporter à tout moment." data-nl="Absoluut. Uw gegevens worden opgeslagen in een beveiligde PostgreSQL-database, gehost in Europa. Pincodes zijn versleuteld en worden nooit in leesbare tekst opgeslagen. Uw gegevens zijn van u en u kunt ze op elk moment exporteren.">Absolument. Vos données sont stockées dans une base de données PostgreSQL sécurisée, hébergée en Europe. Les codes PIN sont chiffrés et ne sont jamais stockés en clair. Vos données vous appartiennent et vous pouvez les exporter à tout moment.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)" data-fr="Puis-je annuler à tout moment ?" data-nl="Kan ik op elk moment annuleren?">Puis-je annuler à tout moment ?</button>
+        <div class="faq-a" data-fr="Oui, sans engagement. Vous pouvez annuler votre abonnement à tout moment depuis votre espace admin. Il n'y a pas de frais de résiliation ni de période minimale." data-nl="Ja, zonder engagement. U kunt uw abonnement op elk moment opzeggen vanuit uw beheerdersruimte. Er zijn geen opzegkosten en geen minimumperiode.">Oui, sans engagement. Vous pouvez annuler votre abonnement à tout moment depuis votre espace admin. Il n'y a pas de frais de résiliation ni de période minimale.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)" data-fr="Y a-t-il un essai gratuit ?" data-nl="Is er een gratis proefperiode?">Y a-t-il un essai gratuit ?</button>
+        <div class="faq-a" data-fr="Oui ! Vous bénéficiez de 14 jours d'essai gratuit sur le plan de votre choix, sans carte de crédit. À la fin de l'essai, vous choisissez de continuer ou non." data-nl="Ja! U krijgt 14 dagen gratis toegang tot het plan van uw keuze, zonder creditcard. Aan het einde van de proefperiode kiest u of u wilt doorgaan.">Oui ! Vous bénéficiez de 14 jours d'essai gratuit sur le plan de votre choix, sans carte de crédit. À la fin de l'essai, vous choisissez de continuer ou non.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ENGAGEMENT PRODUIT -->
+<div style="background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:3.5rem 2rem">
+  <div class="section-inner" style="text-align:center;max-width:680px">
+    <div class="section-eyebrow" data-fr="Notre engagement" data-nl="Onze belofte">Notre engagement</div>
+    <div style="font-size:clamp(1.4rem,2.5vw,1.9rem);font-weight:800;letter-spacing:-.03em;color:var(--ink);margin-bottom:1rem" data-fr="Horaly grandit avec vous" data-nl="Horaly groeit met u mee">Horaly grandit avec vous</div>
+    <p style="font-size:.95rem;color:var(--ink2);line-height:1.8;margin-bottom:2rem" data-fr="Horaly n'est pas un outil figé. Chaque retour client devient une amélioration concrète. Nouvelles fonctionnalités, corrections, optimisations — votre abonnement vous donne accès à toutes les évolutions futures, sans surcoût et sans rien à installer." data-nl="Horaly is geen statisch hulpmiddel. Elke klantfeedback wordt een concrete verbetering. Nieuwe functies, fixes, optimalisaties — uw abonnement geeft u toegang tot alle toekomstige ontwikkelingen, zonder meerkosten en zonder iets te installeren.">Horaly n'est pas un outil figé. Chaque retour client devient une amélioration concrète. Nouvelles fonctionnalités, corrections, optimisations — votre abonnement vous donne accès à toutes les évolutions futures, sans surcoût et sans rien à installer.</p>
+    <div style="display:flex;justify-content:center;gap:2.5rem;flex-wrap:wrap">
+      <div style="text-align:center">
+        <div style="font-size:1.5rem;margin-bottom:.35rem">🔄</div>
+        <div style="font-size:.82rem;font-weight:700;color:var(--ink);margin-bottom:.2rem" data-fr="Mises à jour continues" data-nl="Continue updates">Mises à jour continues</div>
+        <div style="font-size:.75rem;color:var(--ink3)" data-fr="Automatiques, sans interruption" data-nl="Automatisch, zonder onderbreking">Automatiques, sans interruption</div>
+      </div>
+      <div style="text-align:center">
+        <div style="font-size:1.5rem;margin-bottom:.35rem">💬</div>
+        <div style="font-size:.82rem;font-weight:700;color:var(--ink);margin-bottom:.2rem" data-fr="Roadmap guidée par vos besoins" data-nl="Roadmap gestuurd door uw behoeften">Roadmap guidée par vos besoins</div>
+        <div style="font-size:.75rem;color:var(--ink3)" data-fr="Vos retours façonnent le produit" data-nl="Uw feedback vormt het product">Vos retours façonnent le produit</div>
+      </div>
+      <div style="text-align:center">
+        <div style="font-size:1.5rem;margin-bottom:.35rem">🔒</div>
+        <div style="font-size:.82rem;font-weight:700;color:var(--ink);margin-bottom:.2rem" data-fr="Données toujours exportables" data-nl="Gegevens altijd exporteerbaar">Données toujours exportables</div>
+        <div style="font-size:.75rem;color:var(--ink3)" data-fr="Jamais prisonnier de l'outil" data-nl="Nooit gevangen in het systeem">Jamais prisonnier de l'outil</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta-section">
+  <div class="section-inner" style="text-align:center">
+    <div class="cta-title" data-fr="Ne vous réveillez pas en janvier 2027 sans solution." data-nl="Word in januari 2027 niet wakker zonder oplossing.">Ne vous réveillez pas en janvier 2027 sans solution.</div>
+    <p class="cta-sub" data-fr="Installez votre pointeuse conforme aujourd'hui. 14 jours gratuits, sans carte bancaire, sans engagement." data-nl="Installeer vandaag uw conforme prikklok. 14 dagen gratis, geen bankkaart, geen verbintenis.">Installez votre pointeuse conforme aujourd'hui. 14 jours gratuits, sans carte bancaire, sans engagement.</p>
+    <a href="./inscription.html" class="btn-cta-white" data-fr="Créer mon compte gratuit →" data-nl="Mijn gratis account aanmaken →">Créer mon compte gratuit →</a>
+    <p class="cta-note" data-fr="🇧🇪 Support belge · Données en Europe · Conformité garantie 2027" data-nl="🇧🇪 Belgische support · Gegevens in Europa · Conformiteit gegarandeerd 2027">🇧🇪 Support belge · Données en Europe · Conformité garantie 2027</p>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">Hor<span>aly</span></div>
+    <div class="footer-links">
+      <a href="#" data-fr="Mentions légales" data-nl="Juridische vermeldingen">Mentions légales</a>
+      <a href="#" data-fr="Politique de confidentialité" data-nl="Privacybeleid">Politique de confidentialité</a>
+      <a href="mailto:hello@horaly.be">hello@horaly.be</a>
+    </div>
+    <div class="footer-copy">© 2026 Horaly · horaly.be</div>
+  </div>
+</footer>
+
+<!-- MODAL INSCRIPTION -->
+<div class="modal-overlay" id="modal-overlay" onclick="closeModalIfOutside(event)">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal()">×</button>
+    <div id="modal-content">
+      <div class="modal-title" data-fr="Commencer l'essai gratuit" data-nl="Start de gratis proefperiode">Commencer l'essai gratuit</div>
+      <p class="modal-sub" data-fr="14 jours gratuits, sans carte de crédit." data-nl="14 dagen gratis, zonder creditcard.">14 jours gratuits, sans carte de crédit.</p>
+      <div class="modal-plan-selector">
+        <div class="plan-opt" id="plan-starter" onclick="selectPlan('starter')">
+          <div class="plan-opt-name">Starter</div>
+          <div class="plan-opt-price">19€/mois</div>
+        </div>
+        <div class="plan-opt selected" id="plan-pro" onclick="selectPlan('pro')">
+          <div class="plan-opt-name">Pro ⭐</div>
+          <div class="plan-opt-price">39€/mois</div>
+        </div>
+        <div class="plan-opt" id="plan-business" onclick="selectPlan('business')">
+          <div class="plan-opt-name">Business</div>
+          <div class="plan-opt-price">79€/mois</div>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label" data-fr="PRÉNOM" data-nl="VOORNAAM">PRÉNOM</label>
+          <input class="form-input" id="reg-prenom" type="text" placeholder="Jean">
+        </div>
+        <div class="form-group">
+          <label class="form-label" data-fr="NOM" data-nl="NAAM">NOM</label>
+          <input class="form-input" id="reg-nom" type="text" placeholder="Dupont">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label" data-fr="NOM DE L'ENTREPRISE" data-nl="BEDRIJFSNAAM">NOM DE L'ENTREPRISE</label>
+        <input class="form-input" id="reg-entreprise" type="text" placeholder="Ma Boulangerie">
+      </div>
+      <div class="form-group">
+        <label class="form-label">EMAIL</label>
+        <input class="form-input" id="reg-email" type="email" placeholder="jean@maboulangerie.be">
+      </div>
+      <div class="form-group">
+        <label class="form-label" data-fr="MOT DE PASSE" data-nl="WACHTWOORD">MOT DE PASSE</label>
+        <input class="form-input" id="reg-pw" type="password" placeholder="Minimum 8 caractères">
+      </div>
+      <button class="btn-submit" onclick="submitRegistration()" data-fr="Créer mon compte gratuit" data-nl="Mijn gratis account aanmaken">Créer mon compte gratuit</button>
+      <p class="form-note" data-fr="En vous inscrivant, vous acceptez nos conditions d'utilisation." data-nl="Door u te registreren, gaat u akkoord met onze gebruiksvoorwaarden.">En vous inscrivant, vous acceptez nos conditions d'utilisation.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+// BILLING TOGGLE
+let isAnnuel = false;
+function toggleBilling() {
+  isAnnuel = !isAnnuel;
+  const knob = document.getElementById('billing-knob');
+  const lblM = document.getElementById('lbl-mensuel');
+  const lblA = document.getElementById('lbl-annuel');
+  knob.style.left = isAnnuel ? '28px' : '4px';
+  lblM.style.color = isAnnuel ? 'rgba(255,255,255,.5)' : '#fff';
+  lblA.style.color = isAnnuel ? '#fff' : 'rgba(255,255,255,.5)';
+  document.querySelectorAll('.price-mensuel').forEach(el => el.style.display = isAnnuel ? 'none' : 'inline');
+  document.querySelectorAll('.price-annuel').forEach(el => el.style.display = isAnnuel ? 'inline' : 'none');
+  document.querySelectorAll('.price-period').forEach(el => {
+    if (isAnnuel) {
+      el.setAttribute('data-fr', '/an');
+      el.setAttribute('data-nl', '/jaar');
+      el.textContent = currentLang === 'nl' ? '/jaar' : '/an';
+    } else {
+      el.setAttribute('data-fr', '/mois');
+      el.setAttribute('data-nl', '/maand');
+      el.textContent = currentLang === 'nl' ? '/maand' : '/mois';
+    }
+  });
+  document.querySelectorAll('.price-annuel-note').forEach(el => el.style.display = isAnnuel ? 'block' : 'none');
+}
+
+// LANG
+let currentLang = 'fr';
+function setLang(lang) {
+  currentLang = lang;
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.textContent === lang.toUpperCase()));
+  document.querySelectorAll('[data-'+lang+']').forEach(el => {
+    const val = el.getAttribute('data-'+lang);
+    if (el.tagName === 'INPUT') el.placeholder = val;
+    else el.innerHTML = val;
+  });
+}
+
+// ── CAROUSEL MOCKUP ──
+const pinSequence = [2, 5, 8, 1];
+const pinKeys = pinSequence.map(n => 'k'+n);
+const pinDots = ['pd1','pd2','pd3','pd4'];
+let currentScene = 0;
+let carouselTimer = null;
+
+function setSceneDot(n) {
+  for(let i=0; i<4; i++) {
+    const d = document.getElementById('sdot-'+i);
+    if(d) d.classList.toggle('active', i===n);
+  }
+}
+
+function showScene(n) {
+  for(let i=0; i<4; i++) {
+    const s = document.getElementById('scene-'+i);
+    if(s) s.style.display = i===n ? 'block' : 'none';
+  }
+  setSceneDot(n);
+  currentScene = n;
+}
+
+// SCÉNARIO 1 — PIN
+function runScene0() {
+  showScene(0);
+  // Reset PIN
+  pinDots.forEach(id => { const el = document.getElementById(id); if(el) el.classList.remove('filled'); });
+  document.querySelectorAll('.mock-key').forEach(k => k.classList.remove('pressed'));
+  document.getElementById('pin-screen').style.display = 'block';
+  document.getElementById('success-screen').style.display = 'none';
+  document.getElementById('action-buttons').style.display = 'flex';
+  document.getElementById('action-confirm').style.display = 'none';
+
+  let step = 0;
+  function nextPin() {
+    if(step < 4) {
+      const key = document.getElementById(pinKeys[step]);
+      if(key) { key.classList.add('pressed'); setTimeout(()=>key.classList.remove('pressed'),200); }
+      const dot = document.getElementById(pinDots[step]);
+      if(dot) dot.classList.add('filled');
+      step++;
+      setTimeout(nextPin, 480);
+    } else {
+      setTimeout(() => {
+        document.getElementById('pin-screen').style.display = 'none';
+        document.getElementById('success-screen').style.display = 'block';
+        const t = document.getElementById('success-time');
+        if(t) t.textContent = new Date().toLocaleTimeString('fr-BE',{hour:'2-digit',minute:'2-digit'});
+        setTimeout(() => {
+          const btn = document.getElementById('btn-debut');
+          if(btn) { btn.style.background='rgba(5,150,105,.5)'; btn.style.transform='scale(.97)'; }
+          setTimeout(() => {
+            document.getElementById('action-buttons').style.display = 'none';
+            document.getElementById('action-confirm').style.display = 'block';
+            setTimeout(() => nextCarousel(), 2200);
+          }, 350);
+        }, 1000);
+      }, 350);
+    }
+  }
+  setTimeout(nextPin, 700);
+}
+
+// SCÉNARIO 2 — Dashboard (statique, juste afficher)
+function runScene1() {
+  showScene(1);
+  setTimeout(() => nextCarousel(), 4000);
+}
+
+// SCÉNARIO 3 — Email anomalie (statique)
+function runScene2() {
+  showScene(2);
+  setTimeout(() => nextCarousel(), 4000);
+}
+
+// SCÉNARIO 4 — Coût salarial animé
+function runScene3() {
+  showScene(3);
+  const targets = { jd: 1247, sm: 892, pl: 634 };
+  const total = targets.jd + targets.sm + targets.pl;
+  let current = { jd: 0, sm: 0, pl: 0 };
+  const duration = 2200;
+  const steps = 50;
+  const interval = duration / steps;
+  let step = 0;
+  const timer = setInterval(() => {
+    step++;
+    const progress = Math.min(step / steps, 1);
+    const ease = 1 - Math.pow(1 - progress, 3);
+    current.jd = Math.round(targets.jd * ease);
+    current.sm = Math.round(targets.sm * ease);
+    current.pl = Math.round(targets.pl * ease);
+    const el_jd = document.getElementById('cost-jd');
+    const el_sm = document.getElementById('cost-sm');
+    const el_pl = document.getElementById('cost-pl');
+    const el_total = document.getElementById('salary-counter');
+    if(el_jd) el_jd.textContent = current.jd + '€';
+    if(el_sm) el_sm.textContent = current.sm + '€';
+    if(el_pl) el_pl.textContent = current.pl + '€';
+    if(el_total) el_total.textContent = (current.jd + current.sm + current.pl);
+    if(step >= steps) {
+      clearInterval(timer);
+      setTimeout(() => nextCarousel(), 2000);
+    }
+  }, interval);
+}
+
+function nextCarousel() {
+  const next = (currentScene + 1) % 4;
+  const runners = [runScene0, runScene1, runScene2, runScene3];
+  runners[next]();
+}
+
+// Floating badge labels par scénario
+const badgeLabels = {
+  fr: ['Données synchronisées', 'Tableau de bord temps réel', 'Email reçu à 19h', 'Coût calculé en direct'],
+  nl: ['Gegevens gesynchroniseerd', 'Realtime dashboard', 'E-mail ontvangen om 19u', 'Kost live berekend']
+};
+function updateBadge(scene) {
+  const lang = currentLang || 'fr';
+  const badge = document.getElementById('floating-badge');
+  if(badge) {
+    const labels = badgeLabels[lang] || badgeLabels.fr;
+    badge.innerHTML = '&#10003; ' + labels[scene];
+  }
+}
+
+// Démarrer après 800ms
+setTimeout(() => runScene0(), 800);
+
+// CLOCK
+function updateLiveClock() {
+  const el = document.getElementById('live-clock');
+  if(el) el.textContent = new Date().toLocaleTimeString('fr-BE',{hour:'2-digit',minute:'2-digit',second:'2-digit'});
+}
+setInterval(updateLiveClock, 1000);
+updateLiveClock();
+
+// FAQ
+function toggleFaq(btn) {
+  const answer = btn.nextElementSibling;
+  const isOpen = answer.classList.contains('open');
+  document.querySelectorAll('.faq-a').forEach(a => a.classList.remove('open'));
+  document.querySelectorAll('.faq-q').forEach(q => q.classList.remove('open'));
+  if(!isOpen) { answer.classList.add('open'); btn.classList.add('open'); }
+}
+
+// MODAL
+let selectedPlan = 'pro';
+function openModal(e, plan) {
+  if(e) e.preventDefault();
+  if(plan) selectPlan(plan);
+  document.getElementById('modal-overlay').classList.add('open');
+}
+function closeModal() { document.getElementById('modal-overlay').classList.remove('open'); }
+function closeModalIfOutside(e) { if(e.target === document.getElementById('modal-overlay')) closeModal(); }
+function selectPlan(plan) {
+  selectedPlan = plan;
+  document.querySelectorAll('.plan-opt').forEach(p => p.classList.remove('selected'));
+  document.getElementById('plan-'+plan).classList.add('selected');
+}
+
+function submitRegistration() {
+  const prenom = document.getElementById('reg-prenom').value.trim();
+  const nom = document.getElementById('reg-nom').value.trim();
+  const entreprise = document.getElementById('reg-entreprise').value.trim();
+  const email = document.getElementById('reg-email').value.trim();
+  const pw = document.getElementById('reg-pw').value;
+  if(!prenom||!nom||!entreprise||!email||pw.length<8) {
+    alert(currentLang==='fr'?'Veuillez remplir tous les champs (mot de passe min. 8 caractères)':'Vul alle velden in (wachtwoord min. 8 tekens)');
+    return;
+  }
+  // Afficher le succès (à connecter à Supabase lors du multi-entreprises)
+  document.getElementById('modal-content').innerHTML = `
+    <div class="success-msg">
+      <div class="success-icon">🎉</div>
+      <div class="success-title">${currentLang==='fr'?'Bienvenue sur Horaly !':'Welkom bij Horaly!'}</div>
+      <p class="success-text">${currentLang==='fr'?'Nous préparons votre espace. Vous recevrez un email de confirmation à <strong>'+email+'</strong> dans quelques minutes.':'We bereiden uw ruimte voor. U ontvangt een bevestigingsmail op <strong>'+email+'</strong> over enkele minuten.'}</p>
+    </div>`;
+  setTimeout(closeModal, 4000);
+}
+
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const href = a.getAttribute('href');
+    if(href === '#') return;
+    e.preventDefault();
+    document.querySelector(href)?.scrollIntoView({behavior:'smooth'});
+  });
+});
+</script>
+</body>
+</html>
